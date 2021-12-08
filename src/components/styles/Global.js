@@ -6,8 +6,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* height: 100%; */
     margin: 0;
+    background-color: #181a1b;
+    color: #fff;
   }
 
   img { 
