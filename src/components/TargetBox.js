@@ -7,7 +7,7 @@ function TargetBox({ mousePosition }) {
 export const StyledTargetBox = styled.div`
   width: 5vw;
   height: 5vw;
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.3);
   position: absolute;
   top: ${({ position }) => `calc(${position[1]}px - 2.5vw)`};
   left: ${({ position }) => `calc(${position[0]}px - 2.5vw)`};
