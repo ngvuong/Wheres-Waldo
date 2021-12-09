@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container } from "./styles/Container";
 import TargetBox from "./TargetBox";
 import Menu from "./Menu";
+import PopUp from "./PopUp";
 import image from "../assets/113.jpg";
 
 function GameController() {
   const [mousePosition, setMousePosition] = useState([]);
   const [showTarget, setShowTarget] = useState(false);
   const [target, setTarget] = useState("");
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [popUpMessage, setPopUpMessage] = useState("");
   const imageRef = useRef();
 
   const johnnyPositionX = document.body.scrollWidth * 0.392;
@@ -57,10 +60,14 @@ function GameController() {
   }, [mousePosition, johnnyPositionX, johnnyPositionY]);
 
   const onMenuClick = (character) => {
+    setShowPopUp(true);
+    setTimeout(() => {
+      setShowPopUp(false);
+    }, 1000);
     setShowTarget(!showTarget);
     if (target === character) {
-      console.log(`Found ${character}`);
-    } else console.log(`That's not ${character}`);
+      setPopUpMessage(`Found ${character}`);
+    } else setPopUpMessage(`That's not ${character}`);
   };
 
   return (
@@ -70,6 +77,7 @@ function GameController() {
       {showTarget && (
         <Menu mousePosition={mousePosition} onClick={onMenuClick} />
       )}
+      {showPopUp && <PopUp message={popUpMessage} />}
     </Container>
   );
 }
