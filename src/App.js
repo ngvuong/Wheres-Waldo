@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-import Image from "./components/Image";
+import GameController from "./components/GameController";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/styles/Global";
 
@@ -16,7 +16,7 @@ function App() {
       <>
         <GlobalStyle />
         <Header />
-        <Image />
+        <GameController />
       </>
     </ThemeProvider>
   );
