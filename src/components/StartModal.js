@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Overlay } from "./styles/Overlay";
 
@@ -24,14 +24,14 @@ import { Overlay } from "./styles/Overlay";
 const StartModal = React.forwardRef((props, ref) => (
   <Overlay ref={ref}>
     <StyledModal>
-      <button onClick={props.onClick}>Button</button>
+      <button onClick={props.onClick}>Start</button>
     </StyledModal>
   </Overlay>
 ));
 
 export default StartModal;
 
-const StyledModal = styled.div`
+export const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

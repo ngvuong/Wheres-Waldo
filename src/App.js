@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import StartModal from "./components/StartModal";
+import GameOverModal from "./components/GameOverModal";
 import Header from "./components/Header";
 import GameController from "./components/GameController";
 import { ThemeProvider } from "styled-components";
@@ -17,6 +18,8 @@ export const OptionsContext = React.createContext([]);
 
 function App() {
   const [options, setOptions] = useState(["Jerry", "Johnny", "Groot"]);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const overlayRef = useRef(null);
 
   const onOptionsChange = (character) => {
     setOptions((prevOptions) =>
@@ -25,22 +28,26 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(ref.current);
     if (!options.length) {
-      ref.current.style.display = "flex";
+      // ref.current.style.display = "flex";
+      setIsGameOver(true);
       setOptions(["Jerry", "Johnny", "Groot"]);
     }
   }, [options]);
 
-  const ref = useRef(null);
-  const onClick = () => {
-    ref.current.style.display = "none";
+  const onStart = () => {
+    overlayRef.current.style.display = "none";
+  };
+
+  const onRestart = () => {
+    setIsGameOver(false);
   };
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <StartModal onClick={onClick} ref={ref} />
+        <StartModal onClick={onStart} ref={overlayRef} />
+        {isGameOver && <GameOverModal onRestart={onRestart} />}
         <OptionsContext.Provider value={options}>
           <Header />
           <GameController options={options} onOptionsChange={onOptionsChange} />
