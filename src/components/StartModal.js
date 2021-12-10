@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import { Overlay } from "./styles/Overlay";
 
 // function StartModal() {
 //   const overlayRef = useRef();
@@ -21,11 +22,11 @@ import styled from "styled-components";
 // }
 
 const StartModal = React.forwardRef((props, ref) => (
-  <StyledOverlay ref={ref}>
+  <Overlay ref={ref}>
     <StyledModal>
       <button onClick={props.onClick}>Button</button>
     </StyledModal>
-  </StyledOverlay>
+  </Overlay>
 ));
 
 export default StartModal;
@@ -41,13 +42,13 @@ const StyledModal = styled.div`
   background-color: ${({ theme }) => theme.colors.modal};
 `;
 
-const StyledOverlay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.colors.overlay};
-  z-index: 1;
-`;
+// const StyledOverlay = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: ${({ theme }) => theme.colors.overlay};
+//   z-index: 1;
+// `;

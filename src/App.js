@@ -28,6 +28,7 @@ function App() {
     console.log(ref.current);
     if (!options.length) {
       ref.current.style.display = "flex";
+      setOptions(["Jerry", "Johnny", "Groot"]);
     }
   }, [options]);
 
