@@ -1,24 +1,32 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-function StartModal() {
-  const overlayRef = useRef();
-  const modalRef = useRef();
+// function StartModal() {
+//   const overlayRef = useRef();
+//   const modalRef = useRef();
 
-  const onClick = () => {
-    overlayRef.current.style.display = "none";
-    modalRef.current.style.display = "none";
-  };
+//   const onClick = () => {
+//     overlayRef.current.style.display = "none";
+//     modalRef.current.style.display = "none";
+//   };
 
-  return (
-    <StyledOverlay ref={overlayRef}>
-      <StyledModal ref={modalRef}>
-        <h2>Find these characters as fast as possible</h2>
-        <button onClick={onClick}>Start</button>
-      </StyledModal>
-    </StyledOverlay>
-  );
-}
+//   return (
+//     <StyledOverlay ref={overlayRef}>
+//       <StyledModal ref={modalRef}>
+//         <h2>Find these characters as fast as possible</h2>
+//         <button onClick={onClick}>Start</button>
+//       </StyledModal>
+//     </StyledOverlay>
+//   );
+// }
+
+const StartModal = React.forwardRef((props, ref) => (
+  <StyledOverlay ref={ref}>
+    <StyledModal>
+      <button onClick={props.onClick}>Button</button>
+    </StyledModal>
+  </StyledOverlay>
+));
 
 export default StartModal;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import StartModal from "./components/StartModal";
 import Header from "./components/Header";
 import GameController from "./components/GameController";
@@ -24,11 +24,22 @@ function App() {
     );
   };
 
+  useEffect(() => {
+    console.log(ref.current);
+    if (!options.length) {
+      ref.current.style.display = "flex";
+    }
+  }, [options]);
+
+  const ref = useRef(null);
+  const onClick = () => {
+    ref.current.style.display = "none";
+  };
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <StartModal />
+        <StartModal onClick={onClick} ref={ref} />
         <OptionsContext.Provider value={options}>
           <Header />
           <GameController options={options} onOptionsChange={onOptionsChange} />
