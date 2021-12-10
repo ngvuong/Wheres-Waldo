@@ -11,10 +11,8 @@ function GameController() {
   const [target, setTarget] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
+  const [menuOptions, setMenuOptions] = useState(["Jerry", "Johnny", "Groot"]);
   const imageRef = useRef();
-
-  const johnnyPositionX = document.body.scrollWidth * 0.392;
-  const johnnyPositionY = document.body.scrollHeight * 0.388;
 
   useEffect(() => {
     const image = imageRef.current;
@@ -57,7 +55,7 @@ function GameController() {
     } else if (isWithinTarget(grootX, grootY)) {
       setTarget("Groot");
     } else setTarget("");
-  }, [mousePosition, johnnyPositionX, johnnyPositionY]);
+  }, [mousePosition]);
 
   const onMenuClick = (character) => {
     setShowPopUp(true);
@@ -66,7 +64,10 @@ function GameController() {
     }, 1000);
     setShowTarget(!showTarget);
     if (target === character) {
-      setPopUpMessage(`Found ${character}`);
+      setPopUpMessage(`Here's ${character}!`);
+      setMenuOptions((prevOptions) =>
+        prevOptions.filter((option) => option !== target)
+      );
     } else setPopUpMessage(`That's not ${character}`);
   };
 
@@ -75,7 +76,11 @@ function GameController() {
       <img src={image} alt="Universe 113" ref={imageRef} />
       {showTarget && <TargetBox mousePosition={mousePosition} />}
       {showTarget && (
-        <Menu mousePosition={mousePosition} onClick={onMenuClick} />
+        <Menu
+          mousePosition={mousePosition}
+          onClick={onMenuClick}
+          options={menuOptions}
+        />
       )}
       {showPopUp && <PopUp message={popUpMessage} />}
     </Container>
