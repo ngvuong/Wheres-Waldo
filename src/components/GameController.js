@@ -5,13 +5,12 @@ import Menu from "./Menu";
 import PopUp from "./PopUp";
 import image from "../assets/113.jpg";
 
-function GameController() {
+function GameController({ options, onOptionsChange }) {
   const [mousePosition, setMousePosition] = useState([]);
   const [showTarget, setShowTarget] = useState(false);
   const [target, setTarget] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
-  const [menuOptions, setMenuOptions] = useState(["Jerry", "Johnny", "Groot"]);
   const imageRef = useRef();
 
   useEffect(() => {
@@ -65,9 +64,7 @@ function GameController() {
     setShowTarget(!showTarget);
     if (target === character) {
       setPopUpMessage(`Here's ${character}!`);
-      setMenuOptions((prevOptions) =>
-        prevOptions.filter((option) => option !== target)
-      );
+      onOptionsChange(character);
     } else setPopUpMessage(`That's not ${character}`);
   };
 
@@ -79,7 +76,7 @@ function GameController() {
         <Menu
           mousePosition={mousePosition}
           onClick={onMenuClick}
-          options={menuOptions}
+          options={options}
         />
       )}
       {showPopUp && <PopUp message={popUpMessage} />}

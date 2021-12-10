@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import GameController from "./components/GameController";
 import { ThemeProvider } from "styled-components";
@@ -10,13 +10,25 @@ const theme = {
   },
 };
 
+export const OptionsContext = React.createContext([]);
+
 function App() {
+  const [options, setOptions] = useState(["Jerry", "Johnny", "Groot"]);
+
+  const onOptionsChange = (character) => {
+    setOptions((prevOptions) =>
+      prevOptions.filter((option) => option !== character)
+    );
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Header />
-        <GameController />
+        <OptionsContext.Provider value={options}>
+          <Header />
+          <GameController options={options} onOptionsChange={onOptionsChange} />
+        </OptionsContext.Provider>
       </>
     </ThemeProvider>
   );
