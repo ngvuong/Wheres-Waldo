@@ -10,5 +10,6 @@ export const StyledHeader = styled.header`
 
   h1 {
     font-size: clamp(1rem, 2.5vw, 2rem);
+    margin-right: 1vw;
   }
 `;
