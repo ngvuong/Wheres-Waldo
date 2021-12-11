@@ -2,34 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Overlay } from "./styles/Overlay";
 
-// function StartModal() {
-//   const overlayRef = useRef();
-//   const modalRef = useRef();
-
-//   const onClick = () => {
-//     overlayRef.current.style.display = "none";
-//     modalRef.current.style.display = "none";
-//   };
-
-//   return (
-//     <StyledOverlay ref={overlayRef}>
-//       <StyledModal ref={modalRef}>
-//         <h2>Find these characters as fast as possible</h2>
-//         <button onClick={onClick}>Start</button>
-//       </StyledModal>
-//     </StyledOverlay>
-//   );
-// }
-
-const StartModal = React.forwardRef((props, ref) => (
-  <Overlay ref={ref}>
-    <StyledModal>
-      <button onClick={props.onClick}>Start</button>
-    </StyledModal>
-  </Overlay>
-));
-
-export default StartModal;
+function StartModal({ onClick }) {
+  return (
+    <Overlay>
+      <StyledModal>
+        <h2>Find these characters as fast as possible</h2>
+        <button onClick={onClick}>Start</button>
+      </StyledModal>
+    </Overlay>
+  );
+}
 
 export const StyledModal = styled.div`
   display: flex;
@@ -42,13 +24,4 @@ export const StyledModal = styled.div`
   background-color: ${({ theme }) => theme.colors.modal};
 `;
 
-// const StyledOverlay = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: fixed;
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: ${({ theme }) => theme.colors.overlay};
-//   z-index: 1;
-// `;
+export default StartModal;
