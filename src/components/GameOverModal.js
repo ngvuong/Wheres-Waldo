@@ -10,6 +10,10 @@ function GameOverModal({ onRestart, time }) {
     onRestart();
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const minutes = String(Math.floor(time / 60));
   const seconds = String(time % 60);
 
@@ -23,8 +27,10 @@ function GameOverModal({ onRestart, time }) {
               seconds.length < 2 ? "0" + seconds : seconds
             }`
           : "..."}
-        <input type="text" maxLength="3" />
-        <button>Submit</button>
+        <form onSubmit={onSubmit}>
+          <input type="text" maxLength="3" required />
+          <button>Submit</button>
+        </form>
         <button onClick={onClick}>Play Again</button>
       </StyledModal>
     </Overlay>

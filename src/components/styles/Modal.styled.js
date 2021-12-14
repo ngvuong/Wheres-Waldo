@@ -7,7 +7,22 @@ export const StyledModal = styled.div`
   align-items: center;
   gap: 1rem;
   text-align: center;
-  width: 30vw;
+  width: 50vw;
   height: 50vh;
   background-color: ${({ theme }) => theme.colors.modal};
+
+  button {
+    margin: 1rem;
+  }
+
+  img {
+    width: clamp(5rem, 7vw, 10rem);
+  }
+
+  @media screen and (max-width: 480px) {
+    & {
+      width: 80vw;
+      height: 55vh;
+    }
+  }
 `;
