@@ -20,10 +20,10 @@ function Timer({ startTimer, getTime }) {
         });
       } else {
         if (counter > 0) {
+          getTime(counter);
           setCounter(0);
           setSeconds(0);
           setMinutes(0);
-          getTime(counter);
         }
       }
     }, 1000);

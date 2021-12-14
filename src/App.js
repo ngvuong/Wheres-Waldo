@@ -5,12 +5,15 @@ import Header from "./components/Header";
 import GameController from "./components/GameController";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/styles/Global";
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "./firebase/firebase-config";
 
 const theme = {
   colors: {
     header: "#2a2e30",
     modal: "#4f6363d6",
     overlay: "#000000b3",
+    leaderboard: "#ffcc20",
   },
 };
 
@@ -27,6 +30,10 @@ function App() {
       prevOptions.filter((option) => option !== character)
     );
   };
+
+  useEffect(() => {
+    initializeApp(firebaseConfig);
+  }, []);
 
   useEffect(() => {
     if (!options.length) {
