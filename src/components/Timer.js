@@ -2,25 +2,36 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 function Timer() {
-  const [time, setTime] = useState(0);
+  const [counter, setCounter] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
-    const timeId = setTimeout(() => {
-      setTime(time + 1);
-      setSeconds(time % 60);
-      if (minutes !== Math.floor(time / 60)) {
-        setMinutes(minutes + 1);
-      }
+    const interval = setInterval(() => {
+      setCounter((counter) => {
+        const newCount = counter + 1;
+        setSeconds(newCount % 60);
+
+        if (minutes !== Math.floor(newCount / 60)) {
+          setMinutes(minutes + 1);
+        }
+        return newCount;
+      });
     }, 1000);
 
-    return () => clearTimeout(timeId);
-  }, [time, seconds, minutes]);
+    return () => clearInterval(interval);
+  }, [counter, seconds, minutes]);
 
-  return <StyledTimer>{time}</StyledTimer>;
+  return (
+    <StyledTimer>
+      {String(minutes).length < 2 ? "0" + minutes : minutes}:
+      {String(seconds).length < 2 ? "0" + seconds : seconds}
+    </StyledTimer>
+  );
 }
 
-const StyledTimer = styled.div``;
+const StyledTimer = styled.div`
+  font-size: 2rem;
+`;
 
 export default Timer;

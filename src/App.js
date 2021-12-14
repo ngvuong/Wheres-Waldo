@@ -3,7 +3,6 @@ import StartModal from "./components/StartModal";
 import GameOverModal from "./components/GameOverModal";
 import Header from "./components/Header";
 import GameController from "./components/GameController";
-import Timer from "./components/Timer";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/styles/Global";
 
@@ -21,6 +20,7 @@ function App() {
   const [options, setOptions] = useState(["Jerry", "Johnny", "Groot"]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
+  const [startTimer, setStartTimer] = useState(false);
 
   const onOptionsChange = (character) => {
     setOptions((prevOptions) =>
@@ -38,17 +38,17 @@ function App() {
   const onStart = () => {
     setIsGameStart(true);
     setIsGameOver(false);
+    setStartTimer(true);
   };
 
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Timer />
         {!isGameStart && <StartModal onClick={onStart} />}
         {isGameOver && <GameOverModal onRestart={onStart} />}
         <OptionsContext.Provider value={options}>
-          <Header />
+          <Header startTimer={startTimer} />
           <GameController options={options} onOptionsChange={onOptionsChange} />
         </OptionsContext.Provider>
       </>
