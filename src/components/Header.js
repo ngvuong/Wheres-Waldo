@@ -6,14 +6,14 @@ import jerry from "../assets/jerry.webp";
 import johnny from "../assets/johnny.webp";
 import groot from "../assets/groot.webp";
 
-function Header({ startTimer }) {
+function Header({ startTimer, getTime }) {
   return (
     <StyledHeader>
       <h1>Where's Johnny</h1>
       <Thumbnail src={jerry} character={"Jerry"} />
       <Thumbnail src={johnny} character={"Johnny"} />
       <Thumbnail src={groot} character={"Groot"} />
-      <Timer startTimer={startTimer} />
+      <Timer startTimer={startTimer} getTime={getTime} />
     </StyledHeader>
   );
 }

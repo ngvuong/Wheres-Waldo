@@ -21,7 +21,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameStart, setIsGameStart] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
-
+  const [time, setTime] = useState(0);
   const onOptionsChange = (character) => {
     setOptions((prevOptions) =>
       prevOptions.filter((option) => option !== character)
@@ -32,9 +32,14 @@ function App() {
     if (!options.length) {
       setIsGameOver(true);
       setStartTimer(false);
+      setTime(0);
       setOptions(["Jerry", "Johnny", "Groot"]);
     }
   }, [options]);
+
+  const getTime = (time) => {
+    setTime(time);
+  };
 
   const onStart = () => {
     setIsGameStart(true);
@@ -47,9 +52,9 @@ function App() {
       <>
         <GlobalStyle />
         {!isGameStart && <StartModal onClick={onStart} />}
-        {isGameOver && <GameOverModal onRestart={onStart} />}
+        {isGameOver && <GameOverModal onRestart={onStart} time={time} />}
         <OptionsContext.Provider value={options}>
-          <Header startTimer={startTimer} />
+          <Header startTimer={startTimer} getTime={getTime} />
           <GameController options={options} onOptionsChange={onOptionsChange} />
         </OptionsContext.Provider>
       </>

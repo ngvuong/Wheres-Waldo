@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-function Timer({ startTimer }) {
+function Timer({ startTimer, getTime }) {
   const [counter, setCounter] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -23,12 +23,13 @@ function Timer({ startTimer }) {
           setCounter(0);
           setSeconds(0);
           setMinutes(0);
+          getTime(counter);
         }
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [counter, seconds, minutes, startTimer]);
+  }, [counter, seconds, minutes, startTimer, getTime]);
 
   return (
     <StyledTimer>
