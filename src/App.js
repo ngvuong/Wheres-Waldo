@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     if (!options.length) {
       setIsGameOver(true);
+      setStartTimer(false);
       setOptions(["Jerry", "Johnny", "Groot"]);
     }
   }, [options]);

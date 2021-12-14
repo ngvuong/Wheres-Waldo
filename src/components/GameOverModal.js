@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Overlay } from "./styles/Overlay";
-import { StyledModal } from "./StartModal";
+import { StyledModal } from "./styles/Modal.styled";
 
 function GameOverModal({ onRestart }) {
   const overlayRef = useRef();
@@ -14,6 +14,9 @@ function GameOverModal({ onRestart }) {
     <Overlay ref={overlayRef}>
       <StyledModal>
         <h2>Congratulations!</h2>
+        <h3>Submit your time below or play again</h3>
+        <input type="text" maxlength="3" />
+        <button>Submit</button>
         <button onClick={onClick}>Play Again</button>
       </StyledModal>
     </Overlay>

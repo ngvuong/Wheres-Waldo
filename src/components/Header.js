@@ -13,7 +13,7 @@ function Header({ startTimer }) {
       <Thumbnail src={jerry} character={"Jerry"} />
       <Thumbnail src={johnny} character={"Johnny"} />
       <Thumbnail src={groot} character={"Groot"} />
-      {startTimer && <Timer />}
+      <Timer startTimer={startTimer} />
     </StyledHeader>
   );
 }
