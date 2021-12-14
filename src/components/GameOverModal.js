@@ -24,12 +24,16 @@ function GameOverModal({ onRestart, time }) {
     setShowLeaderboard(true);
   };
 
+  const onCloseLeaderboard = () => {
+    setShowLeaderboard(false);
+  };
+
   const minutes = String(Math.floor(time / 60));
   const seconds = String(time % 60);
 
   return (
     <Overlay>
-      {showLeaderboard && <Leaderboard />}
+      {showLeaderboard && <Leaderboard onClose={onCloseLeaderboard} />}
       <StyledModal>
         <h2>Congratulations!</h2>
         <span>Submit your time below or play again</span>

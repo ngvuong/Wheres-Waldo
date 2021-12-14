@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import {
   getFirestore,
@@ -8,9 +8,11 @@ import {
   orderBy,
 } from "firebase/firestore";
 
-function Leaderboard() {
+function Leaderboard({ onClose }) {
+  const recordRef = useRef([]);
+  let records = [];
   useEffect(() => {
-    const getRecord = async () => {
+    const getRecords = async () => {
       const searchQuery = query(
         collection(getFirestore(), "time"),
         orderBy("time", "asc")
@@ -18,15 +20,24 @@ function Leaderboard() {
 
       const querySnapshot = await getDocs(searchQuery);
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
+        recordRef.current.push(doc.data());
+        console.log(recordRef.current);
       });
     };
-    getRecord();
+    getRecords();
+  }, []);
+
+  useEffect(() => {
+    records = recordRef.current.map((doc) => {
+      return <div>hello</div>;
+    });
   }, []);
 
   return (
     <StyledLeaderboard>
+      <span onClick={onClose}>&#10006;</span>
       <h2>Leaderboard</h2>
+      {records}
     </StyledLeaderboard>
   );
 }
@@ -34,7 +45,7 @@ function Leaderboard() {
 export default Leaderboard;
 
 const StyledLeaderboard = styled.div`
-  position: fixed;
+  position: absolute;
   width: 90vw;
   height: 90vh;
   text-align: center;
@@ -42,5 +53,13 @@ const StyledLeaderboard = styled.div`
 
   h2 {
     font-size: 2rem;
+  }
+
+  span {
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
   }
 `;
