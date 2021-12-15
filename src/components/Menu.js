@@ -15,7 +15,7 @@ function Menu({ mousePosition, onClick, options }) {
     </StyledMenu>
   );
 }
-
+// Position menu based on mouse position
 const StyledMenu = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;

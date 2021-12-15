@@ -10,6 +10,7 @@ import {
 
 function Leaderboard({ onClose }) {
   const [records, setRecords] = useState([]);
+  // Query times from firestore db
   useEffect(() => {
     const getRecords = async () => {
       const searchQuery = query(

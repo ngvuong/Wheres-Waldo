@@ -8,6 +8,7 @@ import GlobalStyle from "./components/styles/Global";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase/firebase-config";
 
+// Theme provider for common components
 const theme = {
   colors: {
     header: "#2a2e30",
@@ -16,6 +17,7 @@ const theme = {
   },
 };
 
+// Context for passing character options
 export const OptionsContext = React.createContext([]);
 
 function App() {
@@ -24,16 +26,17 @@ function App() {
   const [isGameStart, setIsGameStart] = useState(false);
   const [startTimer, setStartTimer] = useState(false);
   const [time, setTime] = useState(0);
+  // Filter out found characters
   const onOptionsChange = (character) => {
     setOptions((prevOptions) =>
       prevOptions.filter((option) => option !== character)
     );
   };
-
+  // Init firebase app
   useEffect(() => {
     initializeApp(firebaseConfig);
   }, []);
-
+  // Handle reset when all characters found
   useEffect(() => {
     if (!options.length) {
       setIsGameOver(true);
@@ -42,7 +45,7 @@ function App() {
       setOptions(["Jerry", "Johnny", "Groot"]);
     }
   }, [options]);
-
+  // Grab time from timer to pass to endgame screen
   const getTime = (time) => {
     setTime(time);
   };

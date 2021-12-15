@@ -6,6 +6,7 @@ import jerry from "../assets/jerry.webp";
 import johnny from "../assets/johnny.webp";
 import groot from "../assets/groot.webp";
 
+// Header showing title, character thumbnails, and timer
 function Header({ startTimer, getTime }) {
   return (
     <StyledHeader>

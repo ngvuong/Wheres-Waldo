@@ -5,7 +5,7 @@ function Timer({ startTimer, getTime }) {
   const [counter, setCounter] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
-
+  // Set up timer with interval
   useEffect(() => {
     const interval = setInterval(() => {
       if (startTimer) {
@@ -30,7 +30,7 @@ function Timer({ startTimer, getTime }) {
 
     return () => clearInterval(interval);
   }, [counter, seconds, minutes, startTimer, getTime]);
-
+  // Format timer
   return (
     <StyledTimer>
       {String(minutes).length < 2 ? "0" + minutes : minutes}:

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { OptionsContext } from "../App";
 
 function Thumbnail({ character, src }) {
+  // Consume options context
   const options = useContext(OptionsContext);
 
   return (

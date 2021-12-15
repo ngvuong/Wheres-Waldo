@@ -10,7 +10,7 @@ function GameOverModal({ onRestart, time }) {
   const [showForm, setShowForm] = useState(true);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const inputRef = useRef();
-
+  // Submit time to firestore db
   const onSubmit = async (e) => {
     e.preventDefault();
     const name = inputRef.current.value;

@@ -12,7 +12,7 @@ function GameController({ options, onOptionsChange }) {
   const [showPopUp, setShowPopUp] = useState(false);
   const [popUpMessage, setPopUpMessage] = useState("");
   const imageRef = useRef();
-
+  // Get mouse position relative to page
   useEffect(() => {
     const image = imageRef.current;
     const getMousePosition = (e) => {
@@ -24,7 +24,7 @@ function GameController({ options, onOptionsChange }) {
     image.addEventListener("click", getMousePosition);
     return () => image.removeEventListener("click", getMousePosition);
   }, [mousePosition, showTarget]);
-
+  // Set up character positions based on relative page positioning
   useEffect(() => {
     const bodyWidth = document.body.scrollWidth;
     const bodyHeight = document.body.scrollHeight;
@@ -37,7 +37,7 @@ function GameController({ options, onOptionsChange }) {
     const grootY = bodyHeight * 0.738;
 
     const targetBoxWidth = window.innerWidth * 0.05;
-
+    // Check to see if character is in target box
     const isWithinTarget = (x, y) => {
       return (
         x >= mousePosition[0] - targetBoxWidth / 2 &&
@@ -55,13 +55,15 @@ function GameController({ options, onOptionsChange }) {
       setTarget("Groot");
     } else setTarget("");
   }, [mousePosition]);
-
+  // Pop up for feedback
   const onMenuClick = (character) => {
     setShowPopUp(true);
     setTimeout(() => {
       setShowPopUp(false);
     }, 1000);
+
     setShowTarget(!showTarget);
+
     if (target === character) {
       setPopUpMessage(`Here's ${character}!`);
       onOptionsChange(character);
