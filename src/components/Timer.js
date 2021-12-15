@@ -41,6 +41,7 @@ function Timer({ startTimer, getTime }) {
 
 const StyledTimer = styled.div`
   font-size: 2rem;
+  margin-right: 1vw;
 `;
 
 export default Timer;

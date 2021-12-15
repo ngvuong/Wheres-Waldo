@@ -30,11 +30,16 @@ function Leaderboard({ onClose }) {
   }, []);
 
   const times = records.map((doc, i) => {
+    const minutes = String(Math.floor(doc.time / 60));
+    const seconds = String(doc.time % 60);
     return (
       <div key={doc.id}>
         <div>{i + 1}.</div>
         <div>{doc.name.toUpperCase()}</div>
-        <div>{doc.time}</div>
+        <div>
+          {minutes.length < 2 ? "0" + minutes : minutes}:
+          {seconds.length < 2 ? "0" + seconds : seconds}
+        </div>
       </div>
     );
   });
@@ -52,11 +57,11 @@ export default Leaderboard;
 
 const StyledLeaderboard = styled.div`
   position: absolute;
-  width: 90vw;
-  height: 90vh;
+  width: 70vw;
+  height: 80vh;
   text-align: center;
-  color: black;
-  background-color: ${({ theme }) => theme.colors.leaderboard};
+  border-radius: 10px;
+  overflow: auto;
 
   h2 {
     font-size: 2rem;
@@ -70,9 +75,11 @@ const StyledLeaderboard = styled.div`
     cursor: pointer;
   }
 
-  div {
+  & > div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
+    margin: 1rem;
+    place-items: start;
   }
 `;

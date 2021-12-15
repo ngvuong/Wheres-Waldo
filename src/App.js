@@ -13,7 +13,6 @@ const theme = {
     header: "#2a2e30",
     modal: "#4f6363d6",
     overlay: "#000000b3",
-    leaderboard: "#ffcc20",
   },
 };
 

@@ -10,9 +10,11 @@ function Header({ startTimer, getTime }) {
   return (
     <StyledHeader>
       <h1>Where's Johnny</h1>
-      <Thumbnail src={jerry} character={"Jerry"} />
-      <Thumbnail src={johnny} character={"Johnny"} />
-      <Thumbnail src={groot} character={"Groot"} />
+      <div>
+        <Thumbnail src={jerry} character={"Jerry"} />
+        <Thumbnail src={johnny} character={"Johnny"} />
+        <Thumbnail src={groot} character={"Groot"} />
+      </div>
       <Timer startTimer={startTimer} getTime={getTime} />
     </StyledHeader>
   );

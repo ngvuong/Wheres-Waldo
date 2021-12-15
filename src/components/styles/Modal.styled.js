@@ -10,6 +10,8 @@ export const StyledModal = styled.div`
   width: 50vw;
   height: 50vh;
   background-color: ${({ theme }) => theme.colors.modal};
+  border-radius: 10px;
+  box-shadow: 0 0 10px #4f6363d6;
 
   button {
     margin: 1rem;
