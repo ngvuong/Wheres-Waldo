@@ -13,8 +13,16 @@ export const StyledModal = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px #4f6363d6;
 
-  button {
+  form > input {
+    font-size: 1.1rem;
+    background: #f6fb9e;
+    text-transform: uppercase;
+  }
+
+  form > button {
     margin: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
 
   img {

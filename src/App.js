@@ -11,7 +11,7 @@ import { firebaseConfig } from "./firebase/firebase-config";
 const theme = {
   colors: {
     header: "#2a2e30",
-    modal: "#4f6363d6",
+    modal: "#ffffff66",
     overlay: "#000000b3",
   },
 };

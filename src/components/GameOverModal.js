@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Leaderboard from "./Leaderboard";
 import { Overlay } from "./styles/Overlay";
 import { StyledModal } from "./styles/Modal.styled";
+import Button from "./Button";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 function GameOverModal({ onRestart, time }) {
@@ -48,14 +49,30 @@ function GameOverModal({ onRestart, time }) {
             : "..."}
           {showForm ? (
             <form onSubmit={onSubmit}>
-              <input type="text" maxLength="3" required ref={inputRef} />
-              <button>Submit</button>
+              <input
+                type="text"
+                maxLength="3"
+                placeholder="Name"
+                required
+                ref={inputRef}
+              />
+              <Button bg="#f6fb9e">SUBMIT</Button>
             </form>
           ) : (
             <div>Submitted</div>
           )}
-          <button onClick={onShowLeaderboard}>View Leaderboard</button>
-          <button onClick={onRestart}>Play Again</button>
+          <Button
+            bg="linear-gradient(to right,#8ffce6,#02fc9c)"
+            onClick={onShowLeaderboard}
+          >
+            View Leaderboard
+          </Button>
+          <Button
+            bg="linear-gradient(45deg,#fc8383,#8e8eff)"
+            onClick={onRestart}
+          >
+            Play Again
+          </Button>
         </StyledModal>
       )}
     </Overlay>

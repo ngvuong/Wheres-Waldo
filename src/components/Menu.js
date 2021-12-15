@@ -17,7 +17,6 @@ function Menu({ mousePosition, onClick, options }) {
 }
 
 const StyledMenu = styled.div`
-  /* width: 5vmax; */
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: ${({ position }) => `${position[1]}px`};
@@ -32,6 +31,10 @@ const StyledMenu = styled.div`
     padding: 0.5rem;
     list-style: none;
     cursor: pointer;
+  }
+
+  li:hover {
+    background-color: rgba(255, 255, 255, 0.3);
   }
 `;
 

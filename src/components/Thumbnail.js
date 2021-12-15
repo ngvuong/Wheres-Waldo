@@ -7,10 +7,10 @@ function Thumbnail({ character, src }) {
 
   return (
     <StyledThumbnail options={options} character={character}>
-      <img src={src} alt={character} />
+      <img src={src} alt={character} draggable="false" />
       <div>
         {character === "Johnny" ? "Johnny Bravo" : character}
-        <img src={src} alt={character} />
+        <img src={src} alt={character} draggable="false" />
       </div>
     </StyledThumbnail>
   );
@@ -42,6 +42,10 @@ const StyledThumbnail = styled.div`
 
   &:hover div {
     display: block;
+  }
+
+  &:hover {
+    transform: scale(1.2);
   }
 
   div img {

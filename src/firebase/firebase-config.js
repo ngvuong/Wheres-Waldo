@@ -1,6 +1,3 @@
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-
 export const firebaseConfig = {
   apiKey: "AIzaSyAhHpAoQcVNW-A1-OrPqgn7PFv3Pre6WQw",
   authDomain: "wheres-waldo-c7e2d.firebaseapp.com",
@@ -10,6 +7,3 @@ export const firebaseConfig = {
   appId: "1:692435204529:web:7423ef887c00713bf36590",
   measurementId: "G-NWECQB8CWQ",
 };
-
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
